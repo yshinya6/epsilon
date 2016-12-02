@@ -5,7 +5,7 @@ Epsilon is a programming language which is designed to test parsers including pa
 Epsilon make it easy to measure the performances of parsing algorithms than using practical programming languages.
 
 The language features are as follows: 
-- *Simple*: less than 40 syntax rules.
+- *Simple*: less than 40 syntax rules in EBNF.
 - *Real*: consisting of syntactic elements imported from javascript
 - *Fair*: including syntactic workloads for each parsing algorithm
 
