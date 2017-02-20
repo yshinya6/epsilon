@@ -1,0 +1,113 @@
+<project name="epsilon" default="tool">
+	<!-- directory / file definition -->
+	<property name="BinaryName" value="epsilon" />
+	<property name="LibName" value="libnez" />
+	<property name="core_dir" value="src" />
+	<property name="build_dir" value="build" />
+
+
+	<condition property="have.cobertura">
+		<available file="${lib.cobertura.dir}" />
+	</condition>
+
+	<condition property="have.pmd">
+		<available file="${lib.pmd.dir}" />
+	</condition>
+
+	<!-- ================================== -->
+	<!-- BUILD -->
+	<!-- ================================== -->
+	<target name="build">
+		<mkdir dir="${build_dir}" />
+		<javac fork="true" encoding="UTF-8" srcdir="${core_dir};"
+			destdir="${build_dir}" target="1.8" source="1.8" debug="yes"
+			debuglevel="lines,vars,source" includeantruntime="false">
+			<include name="**/*.java" />
+			<exclude name="**/*Test.java" />
+			<compilerarg value="-Xlint:unchecked" />
+		</javac>
+	</target>
+
+	<target name="build_devel">
+		<mkdir dir="${build_dir}" />
+		<javac fork="true" encoding="UTF-8" srcdir="${core_dir}"
+			destdir="${build_dir}" target="1.8" source="1.8" debug="yes"
+			debuglevel="lines,vars,source" includeantruntime="false">
+			<include name="**/*.java" />
+			<compilerarg value="-Xlint:deprecation" />
+		</javac>
+	</target>
+
+	<!-- ================================== -->
+	<!-- GENERATE JAR -->
+	<!-- ================================== -->
+
+	<target name="lib" depends="build">
+		<jar jarfile="${LibName}.jar">
+			<fileset dir="${build_dir}" includes="**/*.class" />
+			<exclude name="**/*Test.class" />
+		</jar>
+	</target>
+	
+	<target name="tool" depends="build_devel">
+		<jar jarfile="${BinaryName}.jar">
+			<fileset dir="${build_dir}" includes="**/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="synthesizer.Epsilon" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="all" depends="build_devel">
+		<jar jarfile="${BinaryName}-devel.jar">
+			<fileset dir="${build_dir}" includes="**/*.class" />
+			<fileset dir="${devel_dir}"  includes="**/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="synthesizer.Epsilon" />
+			</manifest>
+		</jar>
+	</target>
+
+
+	<!-- ================================== -->
+	<!-- CLEAN -->
+	<!-- ================================== -->
+	<target name="clean">
+		<delete dir="${build_dir}" />
+		<delete file="${BinaryName}.jar" />
+		<delete file="${BinaryName}-devel.jar" />
+		<delete file="${LibName}.jar" />
+		<delete dir="${build_test_dir}" />
+	</target>
+
+	<!-- ================================== -->
+	<!-- TEST PREPARE -->
+	<!-- ================================== -->
+	<target name="test_prepare" depends="tool">
+		<mkdir dir="${build_test_dir}" />
+		<mkdir dir="${test_result}" />
+		<javac srcdir="${test_dir}/java" destdir="${build_test_dir}"
+			debug="on" target="1.8" source="1.8" includeantruntime="false">
+			<classpath path="${BinaryName}.jar" />
+			<classpath path="${junit_jar}" />
+			<compilerarg value="-Xlint:deprecation" />
+			<compilerarg value="-Xlint:unchecked" />
+		</javac>
+	</target>
+
+	<!-- ================================== -->
+	<!-- TEST -->
+	<!-- ================================== -->
+	<target name="test" depends="test_prepare">
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${BinaryName}.jar" />
+			</classpath>
+			<formatter type="plain" />
+			<batchtest fork="yes" todir="${test_result}">
+				<fileset dir="${test_dir}/java" includes="**/*Test.java" />
+			</batchtest>
+		</junit>
+	</target>
+
+</project>

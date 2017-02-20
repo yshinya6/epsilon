@@ -4,8 +4,6 @@ package synthesizer;
 import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
 
-import nez.tool.CommonWriter;
-
 public class EpsilonSynthesizer extends CommonWriter implements NameSample, Ratio, Distribution {
 
 	long currentFileSize;
