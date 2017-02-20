@@ -1,4 +1,5 @@
-package src.epsilon;
+package synthesizer;
+
 
 public interface NameSample {
 	static final String[] VarNameList = { "i", "value", "name", "result", "context", "key", "message", "type", "id", "out", "serialVersionUID", "index", "request", "s", "c", "in", "conf", "data", "path", "e", "input", "msg", "node", "args", "response",

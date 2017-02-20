@@ -1,4 +1,5 @@
-package src.epsilon;
+package synthesizer;
+
 
 /* All Lists are sorted randomly */
 public interface Ratio {

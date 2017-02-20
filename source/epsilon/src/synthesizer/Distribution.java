@@ -1,4 +1,5 @@
-package src.epsilon;
+package synthesizer;
+
 
 public interface Distribution {
 	static final Integer[] DeclarationDepthDistribution = { 2, 2, 1, 2, 2, 2, 2, 2, 2, 3, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 3, 2, 2, 2, 3, 2, 2, 1, 2, 2, 3, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,

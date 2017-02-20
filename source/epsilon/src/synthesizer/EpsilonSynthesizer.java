@@ -1,4 +1,5 @@
-package src.epsilon;
+package synthesizer;
+
 
 import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
