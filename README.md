@@ -14,4 +14,5 @@ Epsilon Synthesizer automatically produce Epsilon soure code for testing parsers
 By using the code, we can confirm the programming language specific parser performances.
 
 ## How to use
+Pending...
 ## How to contribute
