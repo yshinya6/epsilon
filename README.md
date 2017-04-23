@@ -7,7 +7,7 @@ Epsilon make it easy to measure the performances of parsing algorithms than usin
 The language features are as follows: 
 - *Simple*: less than 40 syntax rules in EBNF.
 - *Real*: consisting of syntactic elements imported from javascript
-- *Fair*: including syntactic workloads for each parsing algorithm
+- *Fair*: including syntactic workloads for PEG-based parsers.
 
 ## Epsilon Synthesizer
 Epsilon Synthesizer automatically produce Epsilon soure code for testing parsers. The generated source code have same tendency as real-world source code.
