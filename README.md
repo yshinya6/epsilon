@@ -11,9 +11,9 @@ The language features are as follows:
 
 ## Epsilon Synthesizer
 Epsilon Synthesizer automatically produce Epsilon soure code for testing parsers. The generated source code have same tendency as real-world source code.
-By using the code, we can confirm the programming language specific parser performances.
+By using synthesized epsilon code, we can confirm parser performances specified to a programming language.
 
 ## How to use
-Pending...
+TBA
 ## How to contribute
-Pending...
+TBA
